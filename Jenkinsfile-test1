@@ -1,0 +1,12 @@
+pipeline {
+    agent any
+    stages {
+        stage('Stage 1') {
+            steps {
+                echo "Hello Jenkins!"
+                sleep 100
+                echo "Finish sleep"
+            }
+        }
+    }
+}
