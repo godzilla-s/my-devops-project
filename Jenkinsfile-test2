@@ -1,0 +1,22 @@
+pipeline {
+    agent none
+    stages {
+        stage ('Build') {
+            agent {
+                docker {
+                    image: 'golang:1.17'
+                }
+            }
+            steps {
+                sh 'go version'
+                echo "Build ..."
+            }
+        }
+        stage ('Test') {
+            agent any
+            steps {
+                echo "Testing ..."
+            }
+        }
+    }
+}
