@@ -6,5 +6,10 @@ pipeline {
                 echo "Hello Jenkins!"
             }
         }
+        stage('Stage 2') {
+            steps {
+                date
+            }
+        }
     }
 }
