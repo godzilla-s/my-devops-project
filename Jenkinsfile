@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Stage 2') {
             steps {
-                echo `date`
+                echo "this is step 2, I want to print date"
             }
         }
     }
