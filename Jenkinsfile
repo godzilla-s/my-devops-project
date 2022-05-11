@@ -8,7 +8,17 @@ pipeline {
         }
         stage('Stage 2') {
             steps {
-                echo "this is step 2, I want to print date"
+                echo "Build ...."
+            }
+        }
+        stage('Stage 3') {
+            steps {
+                echo "Testing ...."
+            }
+        }
+        stage('Stage 4') {
+            steps {
+                echo "Deploy ...."
             }
         }
     }
