@@ -1,0 +1,24 @@
+pipeline {
+    agent any 
+    stages {
+        stage ('build') {
+            steps {
+                echo "build image start ..."
+                sh 'docker build -t my-depops-project:0.0.1 .'
+                echo "build image end ..."
+            }
+        }
+
+        stage ('test') {
+            steps {
+                echo "test image"
+            }
+        }
+
+        stage ('deploy') {
+            steps {
+                echo "deploy image"
+            }
+        }
+    }
+}
