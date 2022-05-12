@@ -4,7 +4,7 @@ pipeline {
         stage ('build') {
             steps {
                 echo "build image start ..."
-                sh 'docker build -t my-depops-project:0.0.1 .'
+                sh 'docker build -t zuvakin2017/my-devops-project:0.0.1 .'
                 echo "build image end ..."
             }
         }
@@ -12,6 +12,15 @@ pipeline {
         stage ('test') {
             steps {
                 echo "test image"
+            }
+        }
+
+        stage ('push') {
+            steps {
+                echo "docker push start"
+                sh 'docker login --username zuvakin2017 --password zwj19872022'
+                sh 'docker push zuvakin2017/my-devops-project:0.0.1'
+                echo "docker push finish"
             }
         }
 
