@@ -8,11 +8,13 @@ pipeline {
         }
         stage('Stage 2') {
             steps {
+		sh 'date'
                 echo "Build ...."
             }
         }
         stage('Stage 3') {
             steps {
+		sh 'date'
                 echo "Testing ...."
             }
         }
