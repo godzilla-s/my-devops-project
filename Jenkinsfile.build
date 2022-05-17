@@ -1,10 +1,16 @@
 pipeline {
     agent any 
+    environment {
+        IMAGE_TAG="0.0.3"
+        IMAGE_NAME="my-devops-project"
+        IMAGE_REGISTRY="zuvakin2017"
+        DOCKER_REPO_SECRET=""
+    }
     stages {
         stage ('build') {
             steps {
                 echo "build image start ..."
-                sh 'docker build -t zuvakin2017/my-devops-project:0.0.1 .'
+                sh 'docker build -t ${env.IMAGE_REGISTRY}/${env.IMAGE_NAME}:${env.IMAGE_TAG} .'
                 echo "build image end ..."
             }
         }
@@ -18,8 +24,8 @@ pipeline {
         stage ('push') {
             steps {
                 echo "docker push start"
-                sh 'docker login --username zuvakin2017 --password zwj19872022'
-                sh 'docker push zuvakin2017/my-devops-project:0.0.1'
+                sh 'docker login --username ${DOCKER_REPO_SECRET_USR} --password ${DOCKER_REPO_SECRET_PSW}'
+                sh 'docker push ${env.IMAGE_REGISTRY}/${env.IMAGE_NAME}:${env.IMAGE_TAG}'
                 echo "docker push finish"
             }
         }
